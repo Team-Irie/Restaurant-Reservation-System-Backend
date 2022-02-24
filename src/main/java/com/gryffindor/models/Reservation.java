@@ -3,6 +3,7 @@ package com.gryffindor.models;
 import java.sql.Timestamp;
 
 public class Reservation {
+    private int id;
     private User customer;
     private Timestamp reservationTime;
     private int partySize;
@@ -13,13 +14,22 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(User customer, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber) {
+    public Reservation(int id, User customer, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber) {
+        this.id = id;
         this.customer = customer;
         this.reservationTime = reservationTime;
         this.partySize = partySize;
         this.restaurantName = restaurantName;
         this.restaurantAddress = restaurantAddress;
         this.restaurantPhoneNumber = restaurantPhoneNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getCustomer() {
@@ -73,7 +83,8 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                "customer=" + customer +
+                "id=" + id +
+                ", customer=" + customer +
                 ", reservationTime=" + reservationTime +
                 ", partySize=" + partySize +
                 ", restaurantName='" + restaurantName + '\'' +

@@ -3,6 +3,7 @@ package com.gryffindor.models;
 import com.gryffindor.types.UserRole;
 
 public class User {
+    private int id;
     private String first;
     private String last;
     private String email;
@@ -13,13 +14,22 @@ public class User {
     public User() {
     }
 
-    public User(String first, String last, String email, String password, UserRole role, String phone) {
+    public User(int id, String first, String last, String email, String password, UserRole role, String phone) {
+        this.id = id;
         this.first = first;
         this.last = last;
         this.email = email;
         this.password = password;
         this.role = role;
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirst() {
@@ -73,7 +83,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "first='" + first + '\'' +
+                "id=" + id +
+                ", first='" + first + '\'' +
                 ", last='" + last + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
