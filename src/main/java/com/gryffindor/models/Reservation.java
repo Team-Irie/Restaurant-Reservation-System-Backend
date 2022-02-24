@@ -1,35 +1,61 @@
 package com.gryffindor.models;
 
 import java.sql.Timestamp;
+import javax.persistence.*;
+import com.gryffindor.types.ReservationStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
+@Table(name = "reservations")
 public class Reservation {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "reservation_id")
+    private int reservationId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer")
+    @JsonIgnore
     private User customer;
+
+    @Column(name = "reservation_time")
     private Timestamp reservationTime;
+
+    @Column(name = "party_size")
     private int partySize;
+
+    @Column(name = "restaurant_name")
     private String restaurantName;
+
+    @Column(name = "restaurant_address")
     private String restaurantAddress;
+
+    @Column(name = "restaurant_phone_number")
     private String restaurantPhoneNumber;
+
+    @Column(name = "reservation_status")
+    private ReservationStatus reservationStatus;
 
     public Reservation() {
     }
 
-    public Reservation(int id, User customer, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber) {
-        this.id = id;
+    public Reservation(int reservationId, User customer, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
+        this.reservationId = reservationId;
         this.customer = customer;
         this.reservationTime = reservationTime;
         this.partySize = partySize;
         this.restaurantName = restaurantName;
         this.restaurantAddress = restaurantAddress;
         this.restaurantPhoneNumber = restaurantPhoneNumber;
+        this.reservationStatus = reservationStatus;
     }
 
-    public int getId() {
-        return id;
+    public int getReservationId() {
+        return reservationId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
     }
 
     public User getCustomer() {
@@ -80,16 +106,25 @@ public class Reservation {
         this.restaurantPhoneNumber = restaurantPhoneNumber;
     }
 
+    public ReservationStatus getReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(ReservationStatus reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
-                "id=" + id +
+                "reservationId=" + reservationId +
                 ", customer=" + customer +
                 ", reservationTime=" + reservationTime +
                 ", partySize=" + partySize +
                 ", restaurantName='" + restaurantName + '\'' +
                 ", restaurantAddress='" + restaurantAddress + '\'' +
                 ", restaurantPhoneNumber='" + restaurantPhoneNumber + '\'' +
+                ", reservationStatus=" + reservationStatus +
                 '}';
     }
 }

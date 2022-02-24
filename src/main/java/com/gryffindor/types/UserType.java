@@ -1,5 +1,5 @@
 package com.gryffindor.types;
 
-public enum UserRole {
+public enum UserType {
     CUSTOMER, MANAGER
 }
