@@ -1,10 +1,10 @@
-package com.revature;
+package com.gryffindor.project2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Project2BackendApplicationTests {
+class Project2ApplicationTests {
 
 	@Test
 	void contextLoads() {

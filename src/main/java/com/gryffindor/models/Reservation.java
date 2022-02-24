@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.gryffindor.models;
 
 import java.sql.Timestamp;
 

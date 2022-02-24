@@ -1,6 +1,6 @@
-package com.revature.models;
+package com.gryffindor.models;
 
-import com.revature.types.UserRole;
+import com.gryffindor.types.UserRole;
 
 public class User {
     private String first;
