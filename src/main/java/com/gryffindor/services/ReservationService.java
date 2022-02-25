@@ -1,19 +1,13 @@
 package com.gryffindor.services;
 
-import java.util.Date;
 import java.util.List;
 import java.sql.Timestamp;
-
 import com.gryffindor.models.User;
 import com.gryffindor.models.Reservation;
 import com.gryffindor.types.ReservationStatus;
 import com.gryffindor.repositories.ReservationRepository;
-import com.gryffindor.types.UserType;
-import com.gryffindor.repositories.UserRepository;
-import org.apache.tomcat.jni.Time;
-import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -30,19 +24,20 @@ public class ReservationService {
 
     public Reservation createReservation(int reservationId, User user, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
         Reservation reservation = new Reservation(reservationId, user, reservationTime, partySize, restaurantName, restaurantAddress, restaurantPhoneNumber, reservationStatus);
+
         return reservationRepository.save(reservation);
     }
 
     public List<Reservation> getAllReservations() {
-        return reservationRepository.getAllReservations();
-    }
-
-    public List<Reservation> getReservationsByStatus(ReservationStatus reservationStatus) {
-        return reservationRepository.getReservationsByStatus(reservationStatus);
+        return reservationRepository.findAll();
     }
 
     public List<Reservation> getReservationsByCustomer(User user) {
         return reservationRepository.getReservationsByCustomer(user);
+    }
+
+    public List<Reservation> getReservationsByStatus(ReservationStatus reservationStatus) {
+        return reservationRepository.getReservationsByStatus(reservationStatus);
     }
 
     public Reservation getReservationById(int id) {
@@ -67,5 +62,9 @@ public class ReservationService {
     public void fulfillReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.FULFILLED);
         reservationRepository.save(reservation);
+    }
+
+    public void deleteReservation(Reservation reservation) {
+        reservationRepository.delete(reservation);
     }
 }

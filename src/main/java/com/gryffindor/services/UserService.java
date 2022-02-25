@@ -4,7 +4,6 @@ import java.util.List;
 import com.gryffindor.models.User;
 import com.gryffindor.types.UserType;
 import com.gryffindor.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,16 +27,14 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        return userRepository.getAllUsers();
+        return userRepository.findAll();
     }
 
     public User getUserById(int id) {
         return userRepository.getById(id);
     }
 
-    public User getUserByEmail(String email) {
-        return userRepository.getUserByEmail(email);
-    }
+    public User getUserByEmailAndPassword(String email, String password) { return userRepository.getUserByEmailAndPassword(email, password); }
 
     public void updateUser(User user) {
         userRepository.save(user);

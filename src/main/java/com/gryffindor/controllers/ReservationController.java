@@ -2,22 +2,15 @@ package com.gryffindor.controllers;
 
 import java.util.Map;
 import java.util.List;
-import java.util.ArrayList;
-import java.time.LocalDateTime;
-
 import java.sql.Timestamp;
 import com.gryffindor.models.User;
-import com.gryffindor.utilities.TimeStampParser;
-import com.gryffindor.services.ReservationService;
 import com.gryffindor.services.UserService;
-import com.gryffindor.types.UserType;
 import com.gryffindor.models.Reservation;
 import com.gryffindor.types.ReservationStatus;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import com.gryffindor.utilities.TimeStampParser;
+import com.gryffindor.services.ReservationService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/reservations")
@@ -36,7 +29,7 @@ public class ReservationController {
 
     @PostMapping("/")
     public Reservation createReservation(@RequestBody Map<String, String> body) {
-        int userId = Integer.parseInt(body.get("user_id"));
+        int reservationId = Integer.parseInt(body.get("reservation_id"));
         int partySize = Integer.parseInt(body.get("party_size"));
         String restaurantName = body.get("restaurant_name");
         String restaurantAddress = body.get("restaurant_address");
@@ -44,11 +37,10 @@ public class ReservationController {
         User user = userService.getUserById(Integer.parseInt(body.get("user_id")));
         Timestamp timestamp = TimeStampParser.parse(body.get("reservation_time"));
 
-        return reservationService.createReservation(userId, user, timestamp, partySize, restaurantName, restaurantAddress, restaurantPhoneNumber, ReservationStatus.PENDING);
+        return reservationService.createReservation(reservationId, user, timestamp, partySize, restaurantName, restaurantAddress, restaurantPhoneNumber, ReservationStatus.PENDING);
     }
 
     @GetMapping("/")
-    @ResponseBody
     public List<Reservation> getAllReservations() {
         return reservationService.getAllReservations();
     }
@@ -87,5 +79,12 @@ public class ReservationController {
     public void fulfillReservation(@PathVariable("reservation_id")int id) {
         Reservation reservation = reservationService.getReservationById(id);
         reservationService.fulfillReservation(reservation);
+    }
+
+    @DeleteMapping("/{reservation_id}")
+    @ResponseBody
+    public void deleteReservation(@PathVariable("reservation_id")int id) {
+        Reservation reservation = reservationService.getReservationById(id);
+        reservationService.deleteReservation(reservation);
     }
 }

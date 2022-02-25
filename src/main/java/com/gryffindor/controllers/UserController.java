@@ -1,15 +1,11 @@
 package com.gryffindor.controllers;
 
+import java.util.List;
 import com.gryffindor.models.User;
 import com.gryffindor.services.UserService;
-import com.gryffindor.types.UserType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 @RequestMapping(value = "/users")
@@ -39,7 +35,27 @@ public class UserController {
 
     @GetMapping("/{user_id}")
     @ResponseBody
-    User getUserById(@PathVariable("user_id")int id) {
+    public User getUserById(@PathVariable("user_id")int id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping("/{email}/{password}")
+    @ResponseBody
+    public User getUserByEmailAndPassword(@PathVariable("email")String email, @PathVariable("password")String password) {
+        return userService.getUserByEmailAndPassword(email, password);
+    }
+
+    @PutMapping("/{user_id}")
+    @ResponseBody
+    public void updateUser(@PathVariable("user_id")int id) {
+        User user = userService.getUserById(id);
+        userService.updateUser(user);
+    }
+
+    @DeleteMapping("/{user_id}")
+    @ResponseBody
+    public void deleteUser(@PathVariable("user_id")int id) {
+        User user = userService.getUserById(id);
+        userService.deleteUser(user);
     }
 }
