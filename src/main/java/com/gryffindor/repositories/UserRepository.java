@@ -1,6 +1,9 @@
 package com.gryffindor.repositories;
 
 import com.gryffindor.models.User;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import com.gryffindor.utilities.HibernateUtility;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
