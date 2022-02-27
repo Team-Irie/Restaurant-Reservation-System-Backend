@@ -14,10 +14,12 @@ public class  Project2Application {
 
 /*
 *
-* application is not able to recognize components because of folder structure
-* components must be in same folder as or subfolder in application
+* application is not able to recognize components because of directory structure
+* components must be in either:
+* 1. same directory as main application
+* 2. subdirectory within the main application directory
 *
-* got this error when using @ComponentScan, or when trying to rearrange folder structure:
+* got this error when using @ComponentScan, or when trying to rearrange directory structure:
 *
 *
 * ***************************
@@ -34,7 +36,7 @@ Action:
 Consider defining a bean of type 'com.gryffindor.services.ReservationService' in your configuration.
 *
 *
-* will not compile when reservation controller is recognized
+* will not compile when controllers are referenced in @ComponentScan
 *
 * */
 
