@@ -1,4 +1,4 @@
-package com.gryffindor.application;
+package com.gryffindor.controllers;
 
 import org.springframework.web.bind.annotation.*;
 
