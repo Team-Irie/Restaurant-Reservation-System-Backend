@@ -4,8 +4,8 @@ import java.util.List;
 import com.gryffindor.models.User;
 import com.gryffindor.types.UserType;
 import com.gryffindor.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service

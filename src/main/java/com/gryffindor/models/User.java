@@ -34,8 +34,7 @@ public class User {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
-    public User() {
-    }
+    public User() {}
 
     public User(int userId, String firstName, String lastName, String email, String password, UserType userType, String phoneNumber) {
         this.userId = userId;
