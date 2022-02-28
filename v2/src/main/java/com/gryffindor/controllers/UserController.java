@@ -1,6 +1,8 @@
 package com.gryffindor.controllers;
 
 import com.gryffindor.models.User;
+import com.gryffindor.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +13,14 @@ import java.util.List;
 @CrossOrigin("*")
 public class UserController {
 
-    //inject user service here
+    private UserService us;
 
     public UserController(){ }
+
+    @Autowired
+    public UserController(UserService us) {
+        this.us = us;
+    }
 
     @PostMapping
     @ResponseBody

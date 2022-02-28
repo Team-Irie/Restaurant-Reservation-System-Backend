@@ -14,6 +14,9 @@ import java.util.Map;
 @RequestMapping("/reservations")
 public class ReservationController {
 
+    public ReservationController() {
+    }
+
     @PostMapping("/")
     public String createReservation(@RequestBody Map<String, String> body) {
         return "create reservation";

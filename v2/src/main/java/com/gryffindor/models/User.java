@@ -2,17 +2,38 @@ package com.gryffindor.models;
 
 import com.gryffindor.types.UserType;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="uid")
     private int id;
+
+    @Column(name="first_name", nullable = false)
     private String firstName;
+
+    @Column(name="last_name", nullable = false)
     private String lastName;
+
+    @Column(name="email", nullable = false)
     private String email;
+
+    @Column(name="password", nullable = false)
     private String password;
+
+    @Column(name="type", nullable = false)
     private UserType userType;
+
+    @Column(name="phone")
     private String phone;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
     public User() {}
