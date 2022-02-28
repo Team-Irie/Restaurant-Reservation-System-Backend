@@ -24,8 +24,9 @@ public class ReservationService {
 
     public Reservation createReservation(int reservationId, User user, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
         Reservation reservation = new Reservation(reservationId, user, reservationTime, partySize, restaurantName, restaurantAddress, restaurantPhoneNumber, reservationStatus);
+        reservationRepository.save(reservation);
 
-        return reservationRepository.save(reservation);
+        return reservation;
     }
 
     public List<Reservation> getAllReservations() {
@@ -34,10 +35,6 @@ public class ReservationService {
 
     public List<Reservation> getReservationsByCustomer(User user) {
         return reservationRepository.getReservationsByCustomer(user);
-    }
-
-    public List<Reservation> getReservationsByStatus(ReservationStatus reservationStatus) {
-        return reservationRepository.getReservationsByStatus(reservationStatus);
     }
 
     public Reservation getReservationById(int id) {

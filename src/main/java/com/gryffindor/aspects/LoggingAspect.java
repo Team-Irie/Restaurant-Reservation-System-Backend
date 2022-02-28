@@ -1,5 +1,5 @@
 package com.gryffindor.aspects;
-
+/*
 import com.gryffindor.models.Reservation;
 import com.gryffindor.models.User;
 import org.aspectj.lang.JoinPoint;
@@ -73,3 +73,4 @@ public class LoggingAspect {
         return reservation;
     }
 }
+*/
