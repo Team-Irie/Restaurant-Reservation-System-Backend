@@ -1,4 +1,4 @@
-package com.gryffindor.exceptions;
+package com.hotelReservation.exceptions;
 
 public class NotAManagerException extends Exception {
     public NotAManagerException() {

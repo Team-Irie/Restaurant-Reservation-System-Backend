@@ -1,12 +1,13 @@
-package com.gryffindor.repositories;
+package com.hotelReservation.repositories;
+
+
+import com.hotelReservation.models.Reservation;
+import com.hotelReservation.models.User;
+import com.hotelReservation.types.ReservationStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-import com.gryffindor.models.User;
-import com.gryffindor.models.Reservation;
-import com.gryffindor.types.ReservationStatus;
-import org.springframework.stereotype.Repository;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {

@@ -1,4 +1,4 @@
-package com.gryffindor.utilities;
+package com.hotelReservation.utilities;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

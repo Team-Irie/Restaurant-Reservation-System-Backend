@@ -1,14 +1,16 @@
-package com.gryffindor.controllers;
+package com.hotelReservation.controllers;
 
-import java.util.List;
-import com.gryffindor.models.User;
-import com.gryffindor.services.UserService;
+import com.hotelReservation.models.User;
+import com.hotelReservation.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/users")
+@CrossOrigin("*")
 public class UserController {
 
     private UserService userService;
@@ -20,13 +22,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     @ResponseBody
     public User createUser(@RequestBody User user) {
         return userService.createUser(user.getUserId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getUserType(), user.getPhoneNumber());
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     @ResponseBody
     public List<User> getAllUsers() {
         return userService.getAllUsers();

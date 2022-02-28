@@ -1,14 +1,16 @@
-package com.gryffindor.services;
+package com.hotelReservation.services;
 
-import java.util.List;
-import java.sql.Timestamp;
-import com.gryffindor.models.User;
-import com.gryffindor.models.Reservation;
-import com.gryffindor.types.ReservationStatus;
-import com.gryffindor.repositories.ReservationRepository;
-import org.springframework.stereotype.Service;
+
+import com.hotelReservation.models.Reservation;
+import com.hotelReservation.models.User;
+import com.hotelReservation.repositories.ReservationRepository;
+import com.hotelReservation.types.ReservationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 @Service
 @Transactional
@@ -44,24 +46,24 @@ public class ReservationService {
         return reservationRepository.getById(id);
     }
 
-    public void approveReservation(Reservation reservation) {
+    public Reservation approveReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.APPROVED);
-        reservationRepository.save(reservation);
+        return reservationRepository.save(reservation);
     }
 
-    public void denyReservation(Reservation reservation) {
+    public Reservation denyReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.DENIED);
-        reservationRepository.save(reservation);
+        return reservationRepository.save(reservation);
     }
 
-    public void cancelReservation(Reservation reservation) {
+    public Reservation cancelReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.CANCELED);
-        reservationRepository.save(reservation);
+        return reservationRepository.save(reservation);
     }
 
-    public void fulfillReservation(Reservation reservation) {
+    public Reservation fulfillReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.FULFILLED);
-        reservationRepository.save(reservation);
+        return reservationRepository.save(reservation);
     }
 
     public void deleteReservation(Reservation reservation) {

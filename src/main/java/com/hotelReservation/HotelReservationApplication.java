@@ -1,11 +1,13 @@
-package com.gryffindor.application;
+package com.hotelReservation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class  Project2Application {
+public class HotelReservationApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(Project2Application.class, args);
+		SpringApplication.run(HotelReservationApplication.class, args);
 	}
+
 }

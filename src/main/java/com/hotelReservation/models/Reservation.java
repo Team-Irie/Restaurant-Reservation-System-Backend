@@ -1,9 +1,10 @@
-package com.gryffindor.models;
+package com.hotelReservation.models;
 
-import java.sql.Timestamp;
-import javax.persistence.*;
-import com.gryffindor.types.ReservationStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hotelReservation.types.ReservationStatus;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "reservations")

@@ -1,16 +1,18 @@
-package com.gryffindor.controllers;
+package com.hotelReservation.controllers;
 
-import java.util.Map;
-import java.util.List;
-import java.sql.Timestamp;
-import com.gryffindor.models.User;
-import com.gryffindor.services.UserService;
-import com.gryffindor.models.Reservation;
-import com.gryffindor.types.ReservationStatus;
-import com.gryffindor.utilities.TimeStampParser;
-import com.gryffindor.services.ReservationService;
-import org.springframework.web.bind.annotation.*;
+
+import com.hotelReservation.models.Reservation;
+import com.hotelReservation.models.User;
+import com.hotelReservation.services.ReservationService;
+import com.hotelReservation.services.UserService;
+import com.hotelReservation.types.ReservationStatus;
+import com.hotelReservation.utilities.TimeStampParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/reservations")
@@ -46,27 +48,27 @@ public class ReservationController {
     }
 
     @GetMapping("/customer/{user_id}")
-    public List<Reservation> getReservationsByCustomer(@PathVariable("user_id")int id) {
+    public List<Reservation> getReservationsByCustomer(@PathVariable("user_id") int id) {
         User user = userService.getUserById(id);
 
         return reservationService.getReservationsByCustomer(user);
     }
 
     @GetMapping("/{reservation_status}")
-    public List<Reservation> getReservationsByStatus(@PathVariable("reservation_status")ReservationStatus reservationStatus) {
+    public List<Reservation> getReservationsByStatus(@PathVariable("reservation_status") ReservationStatus reservationStatus) {
         return reservationService.getReservationsByStatus(reservationStatus);
     }
 
     @PutMapping("/approve/{id}")
-    public void approveReservation(@PathVariable("reservation_id")int id) {
+    public Reservation approveReservation(@PathVariable("reservation_id")int id) {
         Reservation reservation = reservationService.getReservationById(id);
-        reservationService.approveReservation(reservation);
+       return reservationService.approveReservation(reservation);
     }
 
     @PutMapping("/deny/{id}")
-    public void denyReservation(@PathVariable("reservation_id")int id) {
+    public Reservation denyReservation(@PathVariable("reservation_id")int id) {
         Reservation reservation = reservationService.getReservationById(id);
-        reservationService.denyReservation(reservation);
+        return reservationService.denyReservation(reservation);
     }
 
     @PutMapping("/cancel/{id}")
@@ -76,9 +78,9 @@ public class ReservationController {
     }
 
     @PutMapping("/fulfill/{id}")
-    public void fulfillReservation(@PathVariable("reservation_id")int id) {
+    public Reservation fulfillReservation(@PathVariable("reservation_id")int id) {
         Reservation reservation = reservationService.getReservationById(id);
-        reservationService.fulfillReservation(reservation);
+        return reservationService.fulfillReservation(reservation);
     }
 
     @DeleteMapping("/{reservation_id}")

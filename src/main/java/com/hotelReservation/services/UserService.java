@@ -1,12 +1,14 @@
-package com.gryffindor.services;
+package com.hotelReservation.services;
+
+
+import com.hotelReservation.models.User;
+import com.hotelReservation.repositories.UserRepository;
+import com.hotelReservation.types.UserType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import com.gryffindor.models.User;
-import com.gryffindor.types.UserType;
-import com.gryffindor.repositories.UserRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -34,7 +36,9 @@ public class UserService {
         return userRepository.getById(id);
     }
 
-    public User getUserByEmailAndPassword(String email, String password) { return userRepository.getUserByEmailAndPassword(email, password); }
+    public User getUserByEmailAndPassword(String email, String password) {
+        return userRepository.getUserByEmailAndPassword(email, password);
+    }
 
     public void updateUser(User user) {
         userRepository.save(user);
@@ -42,5 +46,14 @@ public class UserService {
 
     public void deleteUser(User user) {
         userRepository.delete(user);
+    }
+    public User melay(int id) {
+        User user = userRepository.getById(id);
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+
+        user.setFirstName(firstName + "," + lastName + " " + "Melay");
+        return user;
+
     }
 }

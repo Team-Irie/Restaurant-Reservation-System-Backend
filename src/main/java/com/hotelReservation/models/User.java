@@ -1,9 +1,10 @@
-package com.gryffindor.models;
+package com.hotelReservation.models;
 
-import java.util.List;
-import java.util.ArrayList;
+import com.hotelReservation.types.UserType;
+
 import javax.persistence.*;
-import com.gryffindor.types.UserType;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -34,7 +35,8 @@ public class User {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
-    public User() {}
+    public User() {
+    }
 
     public User(int userId, String firstName, String lastName, String email, String password, UserType userType, String phoneNumber) {
         this.userId = userId;
