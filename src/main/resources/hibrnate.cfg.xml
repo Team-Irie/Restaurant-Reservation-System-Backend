@@ -7,7 +7,7 @@
         <property name="hibernate.connection.password">gryffindor</property>
         <property name="hibernate.connection.url">jdbc:postgresql://34.67.194.147:5432/postgres</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.dialect">org.hibernate.dialect.PostgresPlusDialect</property>
+        <property name="hibernate.connection.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
