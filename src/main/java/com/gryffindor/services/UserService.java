@@ -2,7 +2,6 @@ package com.gryffindor.services;
 
 import java.util.List;
 import com.gryffindor.models.User;
-import com.gryffindor.types.UserType;
 import com.gryffindor.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(int userId, String firstName, String lastName, String email, String password, UserType userType, String phoneNumber) {
-        User user = new User(userId, firstName, lastName, email, password, userType, phoneNumber);
-
-        return userRepository.save(user);
-    }
+    public void createUser(User user) { userRepository.save(user); }
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
