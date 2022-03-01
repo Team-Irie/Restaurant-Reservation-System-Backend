@@ -12,7 +12,7 @@ public class SearchYelpController {
     public String searchYelp(@RequestParam String term, @RequestParam String location) {
         // send GET request to yelp api and return results here
         // request - query parameters(term, location) and url
-        String url = "https://api.yelp.com/v3/businesses/search?term=" + term + "&location=" + location + "limit=1";
+        String url = "https://api.yelp.com/v3/businesses/search?term=" + term + "&location=" + location + "&limit=1";
 
         // create headers
         HttpHeaders headers = new HttpHeaders();
@@ -27,7 +27,7 @@ public class SearchYelpController {
 
         // get JSON response
         String json = response.getBody();
-        System.out.print(json);
+        System.out.print(url);
 
         return json;
     }
