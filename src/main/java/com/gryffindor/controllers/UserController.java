@@ -36,9 +36,9 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/{email}/{password}")
+    @GetMapping("/login/")
     @ResponseBody
-    public User getUserByEmailAndPassword(@PathVariable("email")String email, @PathVariable("password")String password) {
+    public User getUserByEmailAndPassword(@RequestParam("email") String email, @RequestParam("password")String password) {
         return userService.getUserByEmailAndPassword(email, password);
     }
 
