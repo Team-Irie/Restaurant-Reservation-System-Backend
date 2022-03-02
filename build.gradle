@@ -45,6 +45,3 @@ jar {
 	}
 }
 
-def db_username = System.getenv('DB_USERNAME')
-def db_password = System.getenv('DB_PASSWORD')
-def db_url = System.getenv('DB_URL')
