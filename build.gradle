@@ -36,3 +36,11 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+jar {
+	manifest {
+		attributes (
+				'Main-Class': 'com.gryffindor.Project2Application'
+		)
+	}
+}
