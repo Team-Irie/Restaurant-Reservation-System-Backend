@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 @RequestMapping(value = "/users")
-@CrossOrigin("*")
 public class UserController {
 
     private UserService userService;
@@ -23,9 +22,7 @@ public class UserController {
 
     @PostMapping("/")
     @ResponseBody
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user.getUserId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getUserType(), user.getPhoneNumber());
-    }
+    public void createUser(@RequestBody User user) { userService.createUser(user); }
 
     @GetMapping("/")
     @ResponseBody
@@ -47,15 +44,9 @@ public class UserController {
 
     @PutMapping("/{user_id}")
     @ResponseBody
-    public void updateUser(@PathVariable("user_id")int id) {
-        User user = userService.getUserById(id);
-        userService.updateUser(user);
-    }
+    public void updateUser(@RequestBody User user) { userService.updateUser(user); }
 
     @DeleteMapping("/{user_id}")
     @ResponseBody
-    public void deleteUser(@PathVariable("user_id")int id) {
-        User user = userService.getUserById(id);
-        userService.deleteUser(user);
-    }
+    public void deleteUser(@PathVariable("user_id")int id) { userService.deleteUser(userService.getUserById(id)); }
 }
