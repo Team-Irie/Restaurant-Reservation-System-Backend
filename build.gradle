@@ -40,7 +40,7 @@ test {
 jar {
 	manifest {
 		attributes (
-				'Main-Class': 'com.gryffindor.MainApplication'
+				'Main-Class': 'com.gryffindor.Project2Application'
 		)
 	}
 }
