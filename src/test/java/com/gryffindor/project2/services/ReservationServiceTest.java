@@ -33,8 +33,9 @@ public class ReservationServiceTest {
     private User user;
     @BeforeEach
     public void run() {
-        reservation1 = new Reservation(1,1, new Timestamp(System.currentTimeMillis()), 1, "panda", "133 s spring vallyeRd, Tx, 75240", "3030303030", ReservationStatus.APPROVED);
-        Reservation reservation2 = new Reservation(2,1, new Timestamp(System.currentTimeMillis()), 2, "Lalibel", "145 s spring vallyeRd, Tx, 75240", "2020202", ReservationStatus.PENDING);
+        user = new User(12,"john","Cary","jon@gmail.com","jon123", UserType.CUSTOMER,"467-456-5679");
+        reservation1 = new Reservation(1,user, new Timestamp(System.currentTimeMillis()), 1, "panda", "133 s spring vallyeRd, Tx, 75240", "3030303030", ReservationStatus.APPROVED);
+        Reservation reservation2 = new Reservation(2,user, new Timestamp(System.currentTimeMillis()), 2, "Lalibel", "145 s spring vallyeRd, Tx, 75240", "2020202", ReservationStatus.PENDING);
         reservationApproveList.add(reservation1);
         reservationList.add(reservation1);
         reservationList.add(reservation2);

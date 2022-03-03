@@ -12,8 +12,9 @@ public class Reservation {
     @Column(name = "reservation_id")
     private int reservationId;
 
-    @Column(name = "customer_id")
-    private int customerId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer")
+    private User customer;
 
     @Column(name = "reservation_time")
     private Timestamp reservationTime;
@@ -36,9 +37,9 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(int reservationId, int customerId, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
+    public Reservation(int reservationId, User customer, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
         this.reservationId = reservationId;
-        this.customerId = customerId;
+        this.customer = customer;
         this.reservationTime = reservationTime;
         this.partySize = partySize;
         this.restaurantName = restaurantName;
@@ -55,12 +56,12 @@ public class Reservation {
         this.reservationId = reservationId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public User getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomer(User customer) {
+        this.customer = customer;
     }
 
     public Timestamp getReservationTime() {
@@ -115,7 +116,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "reservationId=" + reservationId +
-                ", customerId=" + customerId +
+                ", customer=" + customer +
                 ", reservationTime=" + reservationTime +
                 ", partySize=" + partySize +
                 ", restaurantName='" + restaurantName + '\'' +
