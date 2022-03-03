@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 @RequestMapping(value = "/users")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class UserController {
 
     private UserService userService;
