@@ -3,7 +3,6 @@ package com.gryffindor.models;
 import java.sql.Timestamp;
 import javax.persistence.*;
 import com.gryffindor.types.ReservationStatus;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "reservations")
@@ -13,10 +12,8 @@ public class Reservation {
     @Column(name = "reservation_id")
     private int reservationId;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer")
-    @JsonIgnore
-    private User customer;
+    @Column(name = "customer_id")
+    private int customerId;
 
     @Column(name = "reservation_time")
     private Timestamp reservationTime;
@@ -39,9 +36,9 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(int reservationId, User customer, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
+    public Reservation(int reservationId, int customerId, Timestamp reservationTime, int partySize, String restaurantName, String restaurantAddress, String restaurantPhoneNumber, ReservationStatus reservationStatus) {
         this.reservationId = reservationId;
-        this.customer = customer;
+        this.customerId = customerId;
         this.reservationTime = reservationTime;
         this.partySize = partySize;
         this.restaurantName = restaurantName;
@@ -58,12 +55,12 @@ public class Reservation {
         this.reservationId = reservationId;
     }
 
-    public User getCustomer() {
-        return customer;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(User customer) {
-        this.customer = customer;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public Timestamp getReservationTime() {
@@ -118,7 +115,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "reservationId=" + reservationId +
-                ", customer=" + customer +
+                ", customerId=" + customerId +
                 ", reservationTime=" + reservationTime +
                 ", partySize=" + partySize +
                 ", restaurantName='" + restaurantName + '\'' +
