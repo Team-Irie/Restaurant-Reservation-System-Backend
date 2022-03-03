@@ -23,9 +23,7 @@ public class UserController {
 
     @PostMapping("/")
     @ResponseBody
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user.getUserId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getUserType(), user.getPhoneNumber());
-    }
+    public void createUser(@RequestBody User user) { userService.createUser(user); }
 
     @GetMapping("/")
     @ResponseBody
@@ -39,23 +37,17 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/{email}/{password}")
+    @GetMapping("/login/")
     @ResponseBody
-    public User getUserByEmailAndPassword(@PathVariable("email")String email, @PathVariable("password")String password) {
+    public User getUserByEmailAndPassword(@RequestParam("email") String email, @RequestParam("password")String password) {
         return userService.getUserByEmailAndPassword(email, password);
     }
 
     @PutMapping("/{user_id}")
     @ResponseBody
-    public void updateUser(@PathVariable("user_id")int id) {
-        User user = userService.getUserById(id);
-        userService.updateUser(user);
-    }
+    public void updateUser(@RequestBody User user) { userService.updateUser(user); }
 
     @DeleteMapping("/{user_id}")
     @ResponseBody
-    public void deleteUser(@PathVariable("user_id")int id) {
-        User user = userService.getUserById(id);
-        userService.deleteUser(user);
-    }
+    public void deleteUser(@PathVariable("user_id")int id) { userService.deleteUser(userService.getUserById(id)); }
 }

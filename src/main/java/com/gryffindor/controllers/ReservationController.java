@@ -1,14 +1,9 @@
 package com.gryffindor.controllers;
 
-import java.util.Map;
 import java.util.List;
-import java.sql.Timestamp;
 import com.gryffindor.models.User;
 import com.gryffindor.services.UserService;
 import com.gryffindor.models.Reservation;
-import com.gryffindor.types.ReservationStatus;
-import com.gryffindor.types.UserType;
-import com.gryffindor.utilities.TimeStampParser;
 import com.gryffindor.services.ReservationService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +24,8 @@ public class ReservationController {
     }
 
     @PostMapping("/")
-    public Reservation createReservation(@RequestBody Map<String, String> body) {
-        int reservationId = Integer.parseInt(body.get("reservation_id"));
-        int partySize = Integer.parseInt(body.get("party_size"));
-        String restaurantName = body.get("restaurant_name");
-        String restaurantAddress = body.get("restaurant_address");
-        String restaurantPhoneNumber = body.get("restaurant_phone_number");
-        User user = userService.getUserById(Integer.parseInt(body.get("user_id")));
-        Timestamp timestamp = TimeStampParser.parse(body.get("reservation_time"));
-
-        return reservationService.createReservation(reservationId, user, timestamp, partySize, restaurantName, restaurantAddress, restaurantPhoneNumber, ReservationStatus.PENDING);
-    }
+    @ResponseBody
+    public void createReservation(@RequestBody Reservation reservation) { reservationService.createReservation(reservation); }
 
     @GetMapping("/")
     public List<Reservation> getAllReservations() {
@@ -77,10 +63,11 @@ public class ReservationController {
         reservationService.fulfillReservation(reservation);
     }
 
+    @PutMapping("/{reservation_id}")
+    @ResponseBody
+    public void updateReservation(@RequestBody Reservation reservation) { reservationService.updateReservation(reservation); }
+
     @DeleteMapping("/{reservation_id}")
     @ResponseBody
-    public void deleteReservation(@PathVariable("reservation_id")int id) {
-        Reservation reservation = reservationService.getReservationById(id);
-        reservationService.deleteReservation(reservation);
-    }
+    public void deleteReservation(@PathVariable("reservation_id")int id) { reservationService.deleteReservation(reservationService.getReservationById(id)); }
 }
