@@ -7,6 +7,7 @@ import com.gryffindor.models.User;
 import com.gryffindor.services.UserService;
 import com.gryffindor.models.Reservation;
 import com.gryffindor.types.ReservationStatus;
+import com.gryffindor.types.UserType;
 import com.gryffindor.utilities.TimeStampParser;
 import com.gryffindor.services.ReservationService;
 import org.springframework.web.bind.annotation.*;
@@ -50,11 +51,6 @@ public class ReservationController {
         User user = userService.getUserById(id);
 
         return reservationService.getReservationsByCustomer(user);
-    }
-
-    @GetMapping("/{reservation_status}")
-    public List<Reservation> getReservationsByStatus(@PathVariable("reservation_status")ReservationStatus reservationStatus) {
-        return reservationService.getReservationsByStatus(reservationStatus);
     }
 
     @PutMapping("/approve/{id}")

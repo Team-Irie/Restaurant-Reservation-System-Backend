@@ -12,7 +12,7 @@ public class TimeStampParser {
 
     public static Timestamp parse(String stringTimeStamp) {
         try {
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+            DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MI:SS");
             Date date = formatter.parse(stringTimeStamp);
 
             return new Timestamp(date.getTime());
