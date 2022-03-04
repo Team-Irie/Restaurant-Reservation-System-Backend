@@ -19,7 +19,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user) { userRepository.save(user); }
+    public void createUser(User user) {
+        System.out.println("UserService: user = " + user);
+        userRepository.save(user);
+    }
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
