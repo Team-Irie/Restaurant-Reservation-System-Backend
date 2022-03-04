@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/reservations")
+@CrossOrigin("*")
 public class ReservationController {
 
     private UserService userService;
@@ -63,7 +64,7 @@ public class ReservationController {
         reservationService.fulfillReservation(reservation);
     }
 
-    @PutMapping("/{reservation_id}")
+    @PutMapping("/")
     @ResponseBody
     public void updateReservation(@RequestBody Reservation reservation) { reservationService.updateReservation(reservation); }
 

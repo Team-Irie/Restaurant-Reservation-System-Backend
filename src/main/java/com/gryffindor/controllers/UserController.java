@@ -43,7 +43,7 @@ public class UserController {
         return userService.getUserByEmailAndPassword(email, password);
     }
 
-    @PutMapping("/{user_id}")
+    @PutMapping("/")
     @ResponseBody
     public void updateUser(@RequestBody User user) { userService.updateUser(user); }
 
