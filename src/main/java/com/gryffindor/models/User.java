@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
 import com.gryffindor.types.UserType;
+import java.lang.Object;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 @Entity
 @Table(name = "users")
@@ -37,11 +39,13 @@ public class User {
     public User() {}
 
     public User(int userId, String firstName, String lastName, String email, String password, UserType userType, String phoneNumber) {
+        String pw_hash = BCrypt.hashpw(password, BCrypt.gensalt());
+
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.password = pw_hash;
         this.userType = userType;
         this.phoneNumber = phoneNumber;
         this.reservations = new ArrayList<>();
