@@ -13,23 +13,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "user_type", nullable = false)
-    private UserType userType;
-
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+
+    @Column(name = "user_type", nullable = false)
+    private UserType userType;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();

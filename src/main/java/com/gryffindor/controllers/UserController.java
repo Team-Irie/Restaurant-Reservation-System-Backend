@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
+@CrossOrigin("*")
 @RequestMapping(value = "/users")
 public class UserController {
 
@@ -22,7 +23,10 @@ public class UserController {
 
     @PostMapping("/")
     @ResponseBody
-    public void createUser(@RequestBody User user) { userService.createUser(user); }
+    public void createUser(@RequestBody User user) {
+        System.out.println(user);
+        userService.createUser(user);
+    }
 
     @GetMapping("/")
     @ResponseBody
