@@ -1,6 +1,7 @@
 package com.gryffindor;
 
 import com.gryffindor.services.EmailSenderService;
+import com.gryffindor.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

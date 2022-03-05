@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserService {
     private UserRepository userRepository;
-    private EmailSenderService emailSenderService = new EmailSenderService();
+
+    @Autowired
+    private EmailSenderService emailSenderService;
 
     public UserService() {}
 
