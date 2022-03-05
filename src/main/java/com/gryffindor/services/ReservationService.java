@@ -19,6 +19,7 @@ public class ReservationService {
     @Autowired
     private EmailSenderService emailSenderService;
 
+    @Autowired
     private UserService userService;
 
     public ReservationService() {}
