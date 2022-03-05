@@ -51,7 +51,7 @@ public class ReservationServiceTest {
     @Test
     public void getReservationsByCustomerTest() {
         when(reservationRepository.getReservationsByCustomer(Mockito.any())).thenReturn(reservationList);
-        List<Reservation> result = reservationService.getReservationsByCustomer(user);
+        List<Reservation> result = reservationService.getReservationsByCustomer(user.getUserId());
         assertEquals(2, result.size());
     }
 

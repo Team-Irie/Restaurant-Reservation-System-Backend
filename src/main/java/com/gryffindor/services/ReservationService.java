@@ -42,7 +42,7 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public List<Reservation> getReservationsByCustomer(User user) { return reservationRepository.getReservationsByCustomer(user); }
+    public List<Reservation> getReservationsByCustomer(int id) { return reservationRepository.getReservationsByCustomer(id); }
 
     public Reservation getReservationById(int id) {
         return reservationRepository.getById(id);

@@ -17,11 +17,12 @@ public class  MainApplication {
         SpringApplication.run(MainApplication.class, args);
     }
 
+    /*
     @EventListener(ApplicationReadyEvent.class)
     public void sendMail(){
         senderService.sendEmail("parajuli.kr@gmail.com",
                 "Reservation Confirmation",
                 "Your reservation request has been confirmed");
 
-    }
+    }*/
 }

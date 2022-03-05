@@ -37,9 +37,7 @@ public class ReservationController {
 
     @GetMapping("/customer/{user_id}")
     public List<Reservation> getReservationsByCustomer(@PathVariable("user_id")int id) {
-        User user = userService.getUserById(id);
-
-        return reservationService.getReservationsByCustomer(user);
+        return reservationService.getReservationsByCustomer(id);
     }
 
     @PutMapping("/approve/{id}")
