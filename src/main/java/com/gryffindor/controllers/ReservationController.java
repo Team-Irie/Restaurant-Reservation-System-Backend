@@ -2,6 +2,7 @@ package com.gryffindor.controllers;
 
 import java.util.List;
 import com.gryffindor.models.User;
+import com.gryffindor.services.EmailSenderService;
 import com.gryffindor.services.UserService;
 import com.gryffindor.models.Reservation;
 import com.gryffindor.services.ReservationService;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequestMapping("/reservations")
 @CrossOrigin("*")
 public class ReservationController {
+
 
     private UserService userService;
     private ReservationService reservationService;
