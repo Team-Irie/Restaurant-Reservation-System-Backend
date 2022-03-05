@@ -32,7 +32,9 @@ public class UserService {
         return userRepository.getById(id);
     }
 
-    public User getUserByEmailAndPassword(String email, String password) { return userRepository.getUserByEmailAndPassword(email, password); }
+    public User getUserByEmailAndPassword(String email, String password) {
+        return userRepository.getUserByEmailAndPassword(email, password);
+    }
 
     public void updateUser(User user) {
         userRepository.save(user);

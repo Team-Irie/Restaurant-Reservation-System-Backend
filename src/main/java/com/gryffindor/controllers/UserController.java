@@ -40,10 +40,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/login/")
+    @PostMapping("/login")
     @ResponseBody
-    public User getUserByEmailAndPassword(@RequestParam("email") String email, @RequestParam("password")String password) {
-        return userService.getUserByEmailAndPassword(email, password);
+    public User getUserByEmailAndPassword(@RequestBody String[] loginInfo) {
+        System.out.println(loginInfo[0]);
+        return userService.getUserByEmailAndPassword(loginInfo[0], loginInfo[1]);
     }
 
     @PutMapping("/{user_id}")
