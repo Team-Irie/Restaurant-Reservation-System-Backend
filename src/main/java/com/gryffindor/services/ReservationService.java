@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReservationService {
 
     private ReservationRepository reservationRepository;
-    private EmailSenderService emailSenderService;
+    private EmailSenderService emailSenderService = new EmailSenderService();
     private UserService userService;
 
     public ReservationService() {}
