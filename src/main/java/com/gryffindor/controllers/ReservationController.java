@@ -35,6 +35,14 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
+    @GetMapping("/pending")
+    public List<Reservation> getPendingReservations() {
+        return reservationService.getPendingReservations();
+    }
+
+    @GetMapping("/served")
+    public List<Reservation> getServedReservations() { return reservationService.getServedReservations(); }
+
     @GetMapping("/customer/{user_id}")
     public List<Reservation> getReservationsByCustomer(@PathVariable("user_id")int id) {
         return reservationService.getReservationsByCustomer(id);

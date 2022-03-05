@@ -43,27 +43,15 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
+    public List<Reservation> getPendingReservations() { return filterReservation(reservationRepository.findAll(),ReservationStatus.PENDING); }
+
+    public List<Reservation> getServedReservations() { return filterReservation(reservationRepository.findAll(),ReservationStatus.FULFILLED); }
+
     public List<Reservation> getReservationsByCustomer(int id) { return reservationRepository.getReservationsByCustomer(id); }
 
-    public List<Reservation> getReservationsByCustomerAndPending(int id) {
-        List<Reservation> all = reservationRepository.getReservationsByCustomer(id);
-        List<Reservation> pending  = new ArrayList<>();
-        for(Reservation item : all){
-            if(item.getReservationStatus() == ReservationStatus.PENDING)
-                pending.add(item);
-        }
-        return pending;
-    }
+    public List<Reservation> getReservationsByCustomerAndPending(int id) { return filterReservation(reservationRepository.getReservationsByCustomer(id), ReservationStatus.PENDING); }
 
-    public List<Reservation> getReservationsByCustomerAndServed(int id) {
-        List<Reservation> all = reservationRepository.getReservationsByCustomer(id);
-        List<Reservation> served  = new ArrayList<>();
-        for(Reservation item : all){
-            if(item.getReservationStatus() == ReservationStatus.FULFILLED)
-                served.add(item);
-        }
-        return served;
-    }
+    public List<Reservation> getReservationsByCustomerAndServed(int id) { return filterReservation(reservationRepository.getReservationsByCustomer(id), ReservationStatus.FULFILLED); }
 
     public Reservation getReservationById(int id) {
         return reservationRepository.getById(id);
@@ -95,5 +83,14 @@ public class ReservationService {
 
     public void deleteReservation(Reservation reservation) {
         reservationRepository.delete(reservation);
+    }
+
+    public List<Reservation> filterReservation(List<Reservation> all, ReservationStatus type){
+        List<Reservation> newList = new ArrayList<>();
+        for(Reservation item : all){
+            if(item.getReservationStatus() == type)
+                newList.add(item);
+        }
+        return newList;
     }
 }
