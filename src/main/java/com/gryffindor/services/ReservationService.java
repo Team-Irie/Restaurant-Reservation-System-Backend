@@ -1,5 +1,6 @@
 package com.gryffindor.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.gryffindor.models.User;
 import com.gryffindor.models.Reservation;
@@ -43,6 +44,26 @@ public class ReservationService {
     }
 
     public List<Reservation> getReservationsByCustomer(int id) { return reservationRepository.getReservationsByCustomer(id); }
+
+    public List<Reservation> getReservationsByCustomerAndPending(int id) {
+        List<Reservation> all = reservationRepository.getReservationsByCustomer(id);
+        List<Reservation> pending  = new ArrayList<>();
+        for(Reservation item : all){
+            if(item.getReservationStatus() == ReservationStatus.PENDING)
+                pending.add(item);
+        }
+        return pending;
+    }
+
+    public List<Reservation> getReservationsByCustomerAndServed(int id) {
+        List<Reservation> all = reservationRepository.getReservationsByCustomer(id);
+        List<Reservation> served  = new ArrayList<>();
+        for(Reservation item : all){
+            if(item.getReservationStatus() == ReservationStatus.FULFILLED)
+                served.add(item);
+        }
+        return served;
+    }
 
     public Reservation getReservationById(int id) {
         return reservationRepository.getById(id);

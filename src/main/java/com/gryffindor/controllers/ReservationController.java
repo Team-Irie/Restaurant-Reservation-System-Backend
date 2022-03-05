@@ -40,6 +40,16 @@ public class ReservationController {
         return reservationService.getReservationsByCustomer(id);
     }
 
+    @GetMapping("/customer/pending/{user_id}")
+    public List<Reservation> getReservationsByCustomerAndPending(@PathVariable("user_id")int id) {
+        return reservationService.getReservationsByCustomerAndPending(id);
+    }
+
+    @GetMapping("/customer/served/{user_id}")
+    public List<Reservation> getReservationsByCustomerAndServed(@PathVariable("user_id")int id) {
+        return reservationService.getReservationsByCustomerAndServed(id);
+    }
+
     @PutMapping("/approve/{id}")
     public void approveReservation(@PathVariable("reservation_id")int id) {
         Reservation reservation = reservationService.getReservationById(id);
