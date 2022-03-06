@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-    List<Reservation> getReservationsByCustomer(User user);
+    List<Reservation> getReservationsByCustomer(int id);
 }

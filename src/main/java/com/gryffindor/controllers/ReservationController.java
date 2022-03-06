@@ -2,6 +2,7 @@ package com.gryffindor.controllers;
 
 import java.util.List;
 import com.gryffindor.models.User;
+import com.gryffindor.services.EmailSenderService;
 import com.gryffindor.services.UserService;
 import com.gryffindor.models.Reservation;
 import com.gryffindor.services.ReservationService;
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/reservations")
+@CrossOrigin("*")
 public class ReservationController {
 
-    private UserService userService;
+
+    private UserService userService ;
     private ReservationService reservationService;
 
     public ReservationController() {}
@@ -32,11 +35,27 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
+    @GetMapping("/pending")
+    public List<Reservation> getPendingReservations() {
+        return reservationService.getPendingReservations();
+    }
+
+    @GetMapping("/served")
+    public List<Reservation> getServedReservations() { return reservationService.getServedReservations(); }
+
     @GetMapping("/customer/{user_id}")
     public List<Reservation> getReservationsByCustomer(@PathVariable("user_id")int id) {
-        User user = userService.getUserById(id);
+        return reservationService.getReservationsByCustomer(id);
+    }
 
-        return reservationService.getReservationsByCustomer(user);
+    @GetMapping("/customer/pending/{user_id}")
+    public List<Reservation> getReservationsByCustomerAndPending(@PathVariable("user_id")int id) {
+        return reservationService.getReservationsByCustomerAndPending(id);
+    }
+
+    @GetMapping("/customer/served/{user_id}")
+    public List<Reservation> getReservationsByCustomerAndServed(@PathVariable("user_id")int id) {
+        return reservationService.getReservationsByCustomerAndServed(id);
     }
 
     @PutMapping("/approve/{id}")
@@ -63,7 +82,7 @@ public class ReservationController {
         reservationService.fulfillReservation(reservation);
     }
 
-    @PutMapping("/{reservation_id}")
+    @PutMapping("/")
     @ResponseBody
     public void updateReservation(@RequestBody Reservation reservation) { reservationService.updateReservation(reservation); }
 

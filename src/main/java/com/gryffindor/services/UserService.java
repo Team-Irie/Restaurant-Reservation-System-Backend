@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private UserRepository userRepository;
 
+    @Autowired
+    private EmailSenderService emailSenderService;
+
     public UserService() {}
 
     @Autowired
@@ -33,6 +36,11 @@ public class UserService {
 
     public void updateUser(User user) {
         userRepository.save(user);
+        emailSenderService.sendEmail(user.getEmail(),
+                       "This email is to notify you that your account information has been updated recently. If " +
+                               "you didn't initiate this action please secure your account. Please do not reply to this" +
+                               " message. This email address is not monitored so we are unable to respond to any messages sent to this address. ",
+                "Your account information has been updated!");
     }
 
     public void deleteUser(User user) {

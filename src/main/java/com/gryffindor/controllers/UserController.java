@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 @CrossOrigin("*")
 @RequestMapping(value = "/users")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class UserController {
 
     private UserService userService;
@@ -46,7 +47,7 @@ public class UserController {
         return userService.getUserByEmailAndPassword(email, password);
     }
 
-    @PutMapping("/{user_id}")
+    @PutMapping("/")
     @ResponseBody
     public void updateUser(@RequestBody User user) { userService.updateUser(user); }
 
