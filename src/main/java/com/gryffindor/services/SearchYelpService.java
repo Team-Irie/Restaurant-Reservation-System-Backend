@@ -11,7 +11,7 @@ public class SearchYelpService {
 
         public static String searchYelp(String term, String location) {
         // create url with query parameters
-        String url = "https://api.yelp.com/v3/businesses/search?term=" + term + "&location=" + location + "&limit=1";
+        String url = "https://api.yelp.com/v3/businesses/search?term=" + term + "&location=" + location + "&limit=10";
 
         // create headers
         HttpHeaders headers = new HttpHeaders();
