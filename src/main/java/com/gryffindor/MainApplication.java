@@ -5,14 +5,9 @@ import com.gryffindor.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-<<<<<<< HEAD
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-=======
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
->>>>>>> 11b779600db2ecf37a890bacf4c32cf1ec4c25ee
 
 @SpringBootApplication
 public class  MainApplication {
