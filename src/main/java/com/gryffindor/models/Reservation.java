@@ -33,6 +33,9 @@ public class Reservation {
     @Column(name = "reservation_status")
     private ReservationStatus reservationStatus;
 
+    @Column(name = "reservation_rating")
+    private int reservationRating;
+
     public Reservation() {
     }
 
@@ -111,6 +114,14 @@ public class Reservation {
         this.reservationStatus = reservationStatus;
     }
 
+    public int getReservationRating() {
+        return reservationRating;
+    }
+
+    public void setReservationRating(int reservationRating) {
+        this.reservationRating = reservationRating;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
@@ -122,6 +133,7 @@ public class Reservation {
                 ", restaurantAddress='" + restaurantAddress + '\'' +
                 ", restaurantPhoneNumber='" + restaurantPhoneNumber + '\'' +
                 ", reservationStatus=" + reservationStatus +
+                ", reservationRating=" + reservationRating +
                 '}';
     }
 }
