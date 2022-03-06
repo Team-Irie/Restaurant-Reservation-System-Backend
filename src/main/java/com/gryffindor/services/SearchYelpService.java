@@ -27,6 +27,7 @@ public class SearchYelpService {
         // get JSON response
         String json = response.getBody();
 
+        System.out.println(json);
         return json;
     }
 }
