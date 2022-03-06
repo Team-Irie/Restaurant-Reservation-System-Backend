@@ -39,8 +39,7 @@ public class ReservationControllerTest {
     }
     @Test
     public void getReservationsByCustomerTest() {
-        when(userService.getUserById(Mockito.anyInt())).thenReturn(user);
-        when(reservationService.getReservationsByCustomer(Mockito.any())).thenReturn(reservationList);
+        when(reservationService.getReservationsByCustomer(Mockito.anyInt())).thenReturn(reservationList);
         List<Reservation> result = reservationController.getReservationsByCustomer(12);
         assertNotNull(result);
         assertEquals(1, result.size());
