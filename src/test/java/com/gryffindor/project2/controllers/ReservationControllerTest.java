@@ -1,6 +1,5 @@
 package com.gryffindor.project2.controllers;
 
-
 import com.gryffindor.controllers.ReservationController;
 import com.gryffindor.models.Reservation;
 import com.gryffindor.models.User;
@@ -35,7 +34,7 @@ public class ReservationControllerTest {
     @BeforeEach
     public void run() {
         user = new User(12,"john","Cary","jon@gmail.com","jon123", UserType.CUSTOMER,"467-456-5679");
-        reservation1 = new Reservation(1,user, new Timestamp(System.currentTimeMillis()), 1, "panda", "133 s spring vallyeRd, Tx, 75240", "3030303030", ReservationStatus.APPROVED);
+        reservation1 = new Reservation(1,1, new Timestamp(System.currentTimeMillis()), 1, "panda", "133 s spring vallyeRd, Tx, 75240", "3030303030", ReservationStatus.APPROVED);
         reservationList.add(reservation1);
     }
     @Test
