@@ -22,7 +22,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user) { userRepository.save(user); }
+    public void createUser(User user) {
+        System.out.println("UserService: user = " + user);
+        userRepository.save(user);
+    }
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -32,7 +35,9 @@ public class UserService {
         return userRepository.getById(id);
     }
 
-    public User getUserByEmailAndPassword(String email, String password) { return userRepository.getUserByEmailAndPassword(email, password); }
+    public User getUserByEmailAndPassword(String email, String password) {
+        return userRepository.getUserByEmailAndPassword(email, password);
+    }
 
     public void updateUser(User user) {
         userRepository.save(user);

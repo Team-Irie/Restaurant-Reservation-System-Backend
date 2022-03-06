@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Controller
+@RestController
 @RequestMapping(value = "/users")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class UserController {
@@ -24,7 +24,7 @@ public class UserController {
     @PostMapping("/")
     @ResponseBody
     public void createUser(@RequestBody User user) {
-        System.out.println(user);
+        System.out.println("UserController: user = " + user);
         userService.createUser(user);
     }
 
@@ -40,10 +40,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/login/")
+    @PostMapping("/login")
     @ResponseBody
-    public User getUserByEmailAndPassword(@RequestParam("email") String email, @RequestParam("password")String password) {
-        return userService.getUserByEmailAndPassword(email, password);
+    public User getUserByEmailAndPassword(@RequestBody String[] loginInfo) {
+        System.out.println(loginInfo[0]);
+        return userService.getUserByEmailAndPassword(loginInfo[0], loginInfo[1]);
     }
 
     @PutMapping("/")
