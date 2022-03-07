@@ -16,7 +16,7 @@ public class SearchYelpService {
         // create headers
         HttpHeaders headers = new HttpHeaders();
         String yelpApiKey = System.getenv("YELP_API_KEY");
-        headers.setBearerAuth(yelpApiKey);
+        headers.setBearerAuth("bMx1mn0VIIbcJVkKJllggO7mkp-U6rZT7z0I_MiJC4u11bJFpO1A6-565tZLrRwk7pM5wDk8SfGlR9HbgC7tQ5UM1gQ1VyoOltFXZbPNmrgXMFKcbhztvbDaRBkUYnYx");
 
         // create request
         HttpEntity<?> request = new HttpEntity<>(headers);
