@@ -16,8 +16,8 @@ public class ReservationService {
 
     private ReservationRepository reservationRepository;
 
-    @Autowired
-    private EmailSenderService emailSenderService;
+//    @Autowired
+//    private EmailSenderService emailSenderService;
 
     @Autowired
     private UserService userService;
@@ -32,15 +32,15 @@ public class ReservationService {
     public void createReservation(Reservation reservation) {
         reservationRepository.save(reservation);
         User user = userService.getUserById(reservation.getCustomer());
-        emailSenderService.sendEmail(user.getEmail(),
-                "This message is to inform you that your reservation has been successfully created.\n" +
-                        "Your reservation at: "+reservation.getRestaurantName()+"\n" +
-                        "At: "+reservation.getRestaurantAddress()+"\n" +
-                        "Is scheduled to be on: "+reservation.getReservationTime()+"\n" +
-                        "Party of: "+reservation.getPartySize()+"\n" +
-                        "for more information call the number: "+reservation.getRestaurantPhoneNumber()+"\n" +
-                        "Please do not reply to this message. This email address is not monitored so we are unable to respond to any messages sent to this address.",
-                "Your Reservation Has Been Made!");
+//        emailSenderService.sendEmail(user.getEmail(),
+//                "This message is to inform you that your reservation has been successfully created.\n" +
+//                        "Your reservation at: "+reservation.getRestaurantName()+"\n" +
+//                        "At: "+reservation.getRestaurantAddress()+"\n" +
+//                        "Is scheduled to be on: "+reservation.getReservationTime()+"\n" +
+//                        "Party of: "+reservation.getPartySize()+"\n" +
+//                        "for more information call the number: "+reservation.getRestaurantPhoneNumber()+"\n" +
+//                        "Please do not reply to this message. This email address is not monitored so we are unable to respond to any messages sent to this address.",
+//                "Your Reservation Has Been Made!");
     }
 
     public List<Reservation> getAllReservations() {
