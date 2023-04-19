@@ -47,35 +47,43 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
+    @Deprecated
     public List<Reservation> getPendingReservations() { return filterReservation(reservationRepository.findAll(),ReservationStatus.PENDING); }
 
+    @Deprecated
     public List<Reservation> getServedReservations() { return filterReservation(reservationRepository.findAll(),ReservationStatus.FULFILLED); }
 
     public List<Reservation> getReservationsByCustomer(int id) { return reservationRepository.getReservationsByCustomer(id); }
 
+    @Deprecated
     public List<Reservation> getReservationsByCustomerAndPending(int id) { return filterReservation(reservationRepository.getReservationsByCustomer(id), ReservationStatus.PENDING); }
 
+    @Deprecated
     public List<Reservation> getReservationsByCustomerAndServed(int id) { return filterReservation(reservationRepository.getReservationsByCustomer(id), ReservationStatus.FULFILLED); }
 
     public Reservation getReservationById(int id) {
         return reservationRepository.getById(id);
     }
 
+    @Deprecated
     public void approveReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.APPROVED);
         reservationRepository.save(reservation);
     }
 
+    @Deprecated
     public void denyReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.DENIED);
         reservationRepository.save(reservation);
     }
 
+    @Deprecated
     public void cancelReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.CANCELED);
         reservationRepository.save(reservation);
     }
 
+    @Deprecated
     public void fulfillReservation(Reservation reservation) {
         reservation.setReservationStatus(ReservationStatus.FULFILLED);
         reservationRepository.save(reservation);
@@ -89,6 +97,7 @@ public class ReservationService {
         reservationRepository.delete(reservation);
     }
 
+    @Deprecated
     public List<Reservation> filterReservation(List<Reservation> all, ReservationStatus type){
         List<Reservation> newList = new ArrayList<>();
         for(Reservation item : all){
