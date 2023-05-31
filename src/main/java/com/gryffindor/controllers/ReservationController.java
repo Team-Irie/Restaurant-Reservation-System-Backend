@@ -1,7 +1,6 @@
 package com.gryffindor.controllers;
 
 import java.util.List;
-import com.gryffindor.models.User;
 import com.gryffindor.services.EmailSenderService;
 import com.gryffindor.services.UserService;
 import com.gryffindor.models.Reservation;
@@ -35,59 +34,9 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
-    @Deprecated
-    @GetMapping("/pending")
-    public List<Reservation> getPendingReservations() {
-        return reservationService.getPendingReservations();
-    }
-
-    @Deprecated
-    @GetMapping("/served")
-    public List<Reservation> getServedReservations() { return reservationService.getServedReservations(); }
-
     @GetMapping("/customer/{user_id}")
     public List<Reservation> getReservationsByCustomer(@PathVariable("user_id")int id) {
         return reservationService.getReservationsByCustomer(id);
-    }
-
-    @Deprecated
-    @GetMapping("/customer/pending/{user_id}")
-    public List<Reservation> getReservationsByCustomerAndPending(@PathVariable("user_id")int id) {
-        return reservationService.getReservationsByCustomerAndPending(id);
-    }
-
-    @Deprecated
-    @GetMapping("/customer/served/{user_id}")
-    public List<Reservation> getReservationsByCustomerAndServed(@PathVariable("user_id")int id) {
-        return reservationService.getReservationsByCustomerAndServed(id);
-    }
-
-    @Deprecated
-    @PutMapping("/approve/{id}")
-    public void approveReservation(@PathVariable("reservation_id")int id) {
-        Reservation reservation = reservationService.getReservationById(id);
-        reservationService.approveReservation(reservation);
-    }
-
-    @Deprecated
-    @PutMapping("/deny/{id}")
-    public void denyReservation(@PathVariable("reservation_id")int id) {
-        Reservation reservation = reservationService.getReservationById(id);
-        reservationService.denyReservation(reservation);
-    }
-
-    @Deprecated
-    @PutMapping("/cancel/{id}")
-    public void cancelReservation(@PathVariable("reservation_id")int id) {
-        Reservation reservation = reservationService.getReservationById(id);
-        reservationService.cancelReservation(reservation);
-    }
-
-    @Deprecated
-    @PutMapping("/fulfill/{id}")
-    public void fulfillReservation(@PathVariable("reservation_id")int id) {
-        Reservation reservation = reservationService.getReservationById(id);
-        reservationService.fulfillReservation(reservation);
     }
 
     @PutMapping("/")
