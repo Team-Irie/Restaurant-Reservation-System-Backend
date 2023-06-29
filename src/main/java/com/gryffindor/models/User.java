@@ -2,7 +2,7 @@ package com.gryffindor.models;
 
 import java.util.List;
 import java.util.ArrayList;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import com.gryffindor.types.UserType;
 
 @Entity

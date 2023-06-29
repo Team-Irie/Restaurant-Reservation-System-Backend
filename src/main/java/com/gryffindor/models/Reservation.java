@@ -1,7 +1,7 @@
 package com.gryffindor.models;
 
 import java.sql.Timestamp;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import com.gryffindor.types.ReservationStatus;
 
 @Entity
