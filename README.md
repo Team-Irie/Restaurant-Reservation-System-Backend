@@ -4,6 +4,7 @@ https://github.com/Team-Irie/Restaurant-Reservation-System-Frontend
 
 Before use 
     Ensure that a postgres database is prepared to connect to the application
+        - this application utilizes postgresql 15 insure it is installed if you are testing locally
     Ensure that a Yelp API key is prepared
 
 Enter the information for the postgres db in application.properties
